@@ -43,19 +43,25 @@ public class ConcertPromoter {
 			seatsLeft = seatsLeft - sale;
 			ticketsSold += sale;
 			sales += (double)ticketsSold * phonePrice;
+			System.out.println("Sold " + sale + " tickets.");
+			System.out.println("There are " + seatsLeft + " seats left.");
 			}
 		else {
-			System.out.println("sold out!");
-			}
+			System.out.println("There aren't enough seats to accomodate your party of " + sale);
+			System.out.println("There are " + seatsLeft + " seats available.");
 		}
+	}
 	private void venueSales (int sale){
 		if (seatsLeft - sale > 0){
 			seatsLeft = seatsLeft - sale;
 			ticketsSold += sale;
 			sales += (double)ticketsSold * venuePrice;
+			System.out.println("Sold " + sale + " tickets.");
+			System.out.println("There are " + seatsLeft + " seats left.");
 			}
 		else {
-			System.out.println("sold out!");
+			System.out.println("There aren't enough seats to accomodate your party of " + sale);
+			System.out.println("There are " + seatsLeft + " seats available.");
 			}
 		}		
 	private double getSales(){
@@ -63,7 +69,10 @@ public class ConcertPromoter {
 		}
 	private int getSeatsLeft(){
 		return seatsLeft;
-		}		
+		}
+	private int getTicketsSold(){
+		return ticketsSold;
+	}			
 	
 	public static void main (String args[]) {
 		
@@ -71,9 +80,11 @@ public class ConcertPromoter {
 		PartialsShow.setBandName("The Barnacles");
 		System.out.println(PartialsShow.getBandName());
 		PartialsShow.phoneSales(4);
-		System.out.println(PartialsShow.getSales());
-		System.out.println(PartialsShow.getSeatsLeft());
-		
+		PartialsShow.venueSales(40);
+		PartialsShow.phoneSales(1);
+		PartialsShow.phoneSales(20);
+		System.out.println("Total sales: " + PartialsShow.getSales());
+		System.out.println("Total tickets sold: " + PartialsShow.getTicketsSold());
 	}
 }
 
